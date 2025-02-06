@@ -1,8 +1,13 @@
-FROM centos:7
-MAINTAINER matracey
+FROM docker.io/library/ubuntu:24.04
 
 #from http://cod4-linux-server.webs.com/
-RUN yum -y install glibc.i686 libgcc.i686 libstdc++.i686 zlib.i686
+RUN apt update
+RUN apt install -y \
+  glibc-source \
+  lib32stdc++6 \
+  gcc-i686-linux-gnu \
+  zlib1g-dev
+# glibc.i686 libgcc.i686 libstdc++.i686 zlib.i686
 
 RUN useradd cod4
 ADD cod4 /home/cod4/
