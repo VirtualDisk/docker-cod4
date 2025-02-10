@@ -5,8 +5,7 @@ This repository contains a Docker container for hosting a dedicated server for C
 ## Installation
 
 1. Clone this repository.
-2. Build the Docker image, e.g. `docker build -t virtualdisk/modern-warfare`.
-3. Copy the resource files from the `main/` and `zone/` directories from a Modern Warfare installation to a directory of your choice on your Docker host.
+2. Copy the resource files from the `main/` and `zone/` directories from a Modern Warfare installation to a directory of your choice on your Docker host.
    - Connect to a Cod4x server in game to download some necessary Cod4x libraries automatically
    - You can omit the `main/video` directory as this is not needed by the server.
    - For example, use `/var/cod4/res`, and within it have `main`, `zone`, `usermaps`, and `mods`.
