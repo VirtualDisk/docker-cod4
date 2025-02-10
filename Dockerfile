@@ -1,6 +1,5 @@
 FROM docker.io/library/ubuntu:24.04 AS downloader
-RUN apt update
-RUN apt install -y \
+RUN apt update && apt install -y \
   unzip
 
 WORKDIR /tmp
@@ -11,8 +10,7 @@ RUN unzip cod4.zip \
 FROM docker.io/library/ubuntu:24.04
 
 #from http://cod4-linux-server.webs.com/
-RUN apt update
-RUN apt install -y \
+RUN apt update && apt install -y \
   glibc-source \
   lib32stdc++6 \
   gcc-i686-linux-gnu \
