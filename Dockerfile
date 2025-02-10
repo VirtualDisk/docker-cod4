@@ -20,8 +20,8 @@ RUN apt install -y \
 
 RUN useradd cod4
 COPY --from=downloader /tmp/cod4x_server-linux_21.2/cod4 /home/cod4
-RUN chmod +x /home/cod4/cod4x18_dedrun
-RUN chown -R cod4:cod4 /home/cod4
+RUN chmod +x /home/cod4/cod4x18_dedrun \
+  && chown -R cod4:cod4 /home/cod4
 
 USER cod4
 WORKDIR /home/cod4
