@@ -7,7 +7,6 @@ RUN apt install -y \
   lib32stdc++6 \
   gcc-i686-linux-gnu \
   zlib1g-dev
-# glibc.i686 libgcc.i686 libstdc++.i686 zlib.i686
 
 RUN useradd cod4
 ADD cod4 /home/cod4/

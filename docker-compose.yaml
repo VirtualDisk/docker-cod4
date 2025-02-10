@@ -1,0 +1,18 @@
+name: cod4
+services:
+  modern-warfare:
+    stdin_open: true
+    user: root
+    tty: true
+    container_name: mw
+    build: .
+    command: +set sv_authorizemode '-1' +exec server.cfg +map_rotate
+    ports:
+      - 28960:28960
+      - 28960:28960/udp
+    volumes:
+      # Download Cod4 via steam, then connect to a Cod4x server to download the assets needed here
+      - /var/cod4/res/main:/home/cod4/main
+      - /var/cod4/res/zone:/home/cod4/zone
+      - /var/cod4/res/mods:/home/cod4/mods
+      - /var/cod4/res/usermaps:/home/user/cod4/usermaps:ro
