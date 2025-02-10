@@ -1,4 +1,4 @@
-FROM docker.io/library/ubuntu:24.04 AS downloader
+FROM docker.io/library/debian:stable-backports AS downloader
 RUN apt update && apt install -y \
   unzip
 
@@ -7,7 +7,7 @@ ADD https://cod4x.ovh/uploads/short-url/59kvOM9hBabZjPJRlLX029BcskI.zip /tmp/cod
 RUN unzip cod4.zip \
   && mv cod4x_server-linux_21.2/cod4x-linux-server cod4x_server-linux_21.2/cod4
 
-FROM docker.io/library/ubuntu:24.04
+FROM docker.io/library/debian:stable-backports
 
 #from http://cod4-linux-server.webs.com/
 RUN apt update && apt install -y \
