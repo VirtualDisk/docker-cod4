@@ -1,4 +1,4 @@
-# Docker-cod4
+# Call of Duty 4 Server (containerized)
 
 This repository contains a Docker container for hosting a dedicated server for Call of Duty 4: Modern Warfare with CoD4x server mod. It is based on [matracey/docker-cod4](https://github.com/matracey/docker-cod4) with a number of enhancements.
 
@@ -6,20 +6,13 @@ This repository contains a Docker container for hosting a dedicated server for C
 
 1. Clone this repository.
 2. Build the Docker image, e.g. `docker build -t virtualdisk/modern-warfare`.
-3. Copy the resource files from the `main/` and `zone/` directories to a directory of your choice on your Docker host.
+3. Copy the resource files from the `main/` and `zone/` directories from a Modern Warfare installation to a directory of your choice on your Docker host.
    - Connect to a Cod4x server in game to download some necessary Cod4x libraries automatically
    - You can omit the `main/video` directory as this is not needed by the server.
    - For example, use `/var/cod4/res`, and within it have `main`, `zone`, `usermaps`, and `mods`.
 4. Run your server with the docker-compose.yaml file:
 `docker compose up --build`
-5. Connect to your server!
-
-## Notes on the Docker compose file
-
-- `-it`: Runs the Docker container in interactive, pseudo-tty mode. Required for typing into the CoD console.
-  - Alternatively, use `-dit` to start the container detached. Attach later with `docker attach <container>`.
-  - To restart a stopped container, use `docker start -ai <container>`. This automatically and interactively attaches to the container on start.
-- `-p 28960:28960 -p 28960:28960/udp`: Forwards TCP & UDP ports 28960 (the default CoD Server Port) to the Docker host. Other ports may not be necessary.
+5. Connect to your server from a multiplayer client with `/connect $your.hosts.ip:28960`
 
 ## Volume Mounts Explained
 
