@@ -4,6 +4,7 @@ services:
     stdin_open: true
     user: root
     tty: true
+    platform: linux/amd64
     container_name: mw
     build: .
     command: +set sv_authorizemode '-1' +exec server.cfg +map_rotate

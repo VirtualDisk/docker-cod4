@@ -1,3 +1,13 @@
+FROM docker.io/library/ubuntu:24.04 AS downloader
+RUN apt update
+RUN apt install -y \
+  unzip
+
+WORKDIR /tmp
+ADD https://cod4x.ovh/uploads/short-url/59kvOM9hBabZjPJRlLX029BcskI.zip /tmp/cod4.zip
+RUN unzip cod4.zip \
+  && mv cod4x_server-linux_21.2/cod4x-linux-server cod4x_server-linux_21.2/cod4
+
 FROM docker.io/library/ubuntu:24.04
 
 #from http://cod4-linux-server.webs.com/
@@ -9,7 +19,8 @@ RUN apt install -y \
   zlib1g-dev
 
 RUN useradd cod4
-ADD cod4 /home/cod4/
+COPY --from=downloader /tmp/cod4x_server-linux_21.2/cod4 /home/cod4
+RUN chmod +x /home/cod4/cod4x18_dedrun
 RUN chown -R cod4:cod4 /home/cod4
 
 USER cod4
